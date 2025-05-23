@@ -11,6 +11,8 @@ file_to_find="../backend/.env.docker"
 
 # Check the current FRONTEND_URL in the .env file
 current_url=$(sed -n "4p" $file_to_find)
+echo "Checking file path: $ENV_FILE"
+ls -l "$ENV_FILE"
 
 # Update the .env file if the IP address has changed
 if [[ "$current_url" != "FRONTEND_URL=\"http://${ipv4_address}:5173\"" ]]; then
