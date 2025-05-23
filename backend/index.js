@@ -24,6 +24,6 @@ app.listen(5000, (err) => {
         console.log("Error Occured", err)
     }
     else {
-        console.log("Server is running")
+        console.log("Server is running properly")
     }
 })
