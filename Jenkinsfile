@@ -7,20 +7,20 @@ pipeline {
     }
     
     parameters {
-        string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
+        // string(name: 'FRONTEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
         string(name: 'BACKEND_DOCKER_TAG', defaultValue: '', description: 'Setting docker image for latest push')
     }
     
     stages {
-        stage("Validate Parameters") {
-            steps {
-                script {
-                    if (params.FRONTEND_DOCKER_TAG == '' || params.BACKEND_DOCKER_TAG == '') {
-                        error("FRONTEND_DOCKER_TAG and BACKEND_DOCKER_TAG must be provided.")
-                    }
-                }
-            }
-        }
+        // stage("Validate Parameters") {
+        //     steps {
+        //         script {
+        //             if (params.FRONTEND_DOCKER_TAG == '' || params.BACKEND_DOCKER_TAG == '') {
+        //                 error("FRONTEND_DOCKER_TAG and BACKEND_DOCKER_TAG must be provided.")
+        //             }
+        //         }
+        //     }
+        // }
         stage("Workspace cleanup"){
             steps{
                 script{
@@ -81,15 +81,15 @@ pipeline {
                     }
                 }
                 
-                stage("Frontend env setup"){
-                    steps {
-                        script{
-                            dir("Automations"){
-                                sh "bash updatefrontendnew.sh"
-                            }
-                        }
-                    }
-                }
+                // stage("Frontend env setup"){
+                //     steps {
+                //         script{
+                //             dir("Automations"){
+                //                 sh "bash updatefrontendnew.sh"
+                //             }
+                //         }
+                //     }
+                // }
             }
         }
         
@@ -100,9 +100,9 @@ pipeline {
                             docker_build("promanager-backend","${params.BACKEND_DOCKER_TAG}","simratpalsingh")
                         }
                     
-                        dir('frontend'){
-                            docker_build("promanager-frontend","${params.FRONTEND_DOCKER_TAG}","simratpalsingh")
-                        }
+                        // dir('frontend'){
+                        //     docker_build("promanager-frontend","${params.FRONTEND_DOCKER_TAG}","simratpalsingh")
+                        // }
                 }
             }
         }
@@ -111,7 +111,7 @@ pipeline {
             steps{
                 script{
                     docker_push("promanager-backend","${params.BACKEND_DOCKER_TAG}","simratpalsingh") 
-                    docker_push("promanager-frontend","${params.FRONTEND_DOCKER_TAG}","simratpalsingh")
+                    // docker_push("promanager-frontend","${params.FRONTEND_DOCKER_TAG}","simratpalsingh")
                 }
             }
         }
@@ -120,7 +120,7 @@ pipeline {
         success{
             archiveArtifacts artifacts: '*.xml', followSymlinks: false
             build job: "Wanderlust-CD", parameters: [
-                string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
+                // string(name: 'FRONTEND_DOCKER_TAG', value: "${params.FRONTEND_DOCKER_TAG}"),
                 string(name: 'BACKEND_DOCKER_TAG', value: "${params.BACKEND_DOCKER_TAG}")
             ]
         }
