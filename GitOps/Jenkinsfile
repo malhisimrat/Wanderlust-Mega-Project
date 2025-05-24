@@ -64,8 +64,8 @@ pipeline {
                         echo "Adding changes to git: "
                         git add .
                         
-                        echo "Commiting changes: "
-                        git commit -m "Updated environment variables"
+                        // echo "Commiting changes: "
+                        // git commit -m "Updated environment variables"
                         
                         echo "Pushing changes to github: "
                         git push https://github.com/malhisimrat/Wanderlust-Mega-Project.git main
