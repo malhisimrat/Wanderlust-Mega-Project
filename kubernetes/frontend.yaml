@@ -19,6 +19,7 @@ spec:
       containers:
         - name: frontend
           image: simratpalsingh/promanager-frontend:v1
+          command: ["npm", "run", "dev"]
           ports:
             - containerPort: 5173
 ---
