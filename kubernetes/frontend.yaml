@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: simratpalsingh/promanager-frontend:v1
+          image: simratpalsingh/promanager-frontend:v1.2
           ports:
             - containerPort: 5173
 ---
