@@ -30,4 +30,5 @@ EXPOSE 5173
 
 # Define the default command to run the application in development mode
 ENV HOST 0.0.0.0
-CMD ["npm", "run", "dev", "--", "--host"]
+ENV PORT 5173
+CMD ["npm", "run", "dev", "--", "--host","--port"]
