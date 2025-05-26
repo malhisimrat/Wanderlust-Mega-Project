@@ -18,12 +18,12 @@ const adminRout = require('./server/routes/adminRoutes')
 app.use('/admin', adminRout)
 const employeeRout = require('./server/routes/employeeRoutes')
 app.use('/employee', employeeRout)
-
-app.listen(5000, (err) => {
+const PORT = 8080
+app.listen(PORT, (err) => {
     if (err) {
         console.log("Error Occured", err)
     }
     else {
-        console.log("Server is running properly fine")
+        console.log("Serve is Proper Running at ",PORT)
     }
 })
