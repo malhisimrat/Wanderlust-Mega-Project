@@ -11,7 +11,7 @@ app.use(express.json({ limit: '50mb' }));
 app.use(express.json())
 
 app.get('/', (req, res) => {
-    res.send("Welcome")
+    res.send("Welcome to the backend URL")
 })
 
 const adminRout = require('./server/routes/adminRoutes')
