@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: simratpalsingh/promanager-backend:v4.6
+          image: simratpalsingh/promanager-backend:v4.7
           ports:
             - containerPort: 8080
 ---
